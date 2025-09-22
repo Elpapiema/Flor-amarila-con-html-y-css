@@ -1,119 +1,119 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <style>
-        .back {
-            position: fixed;
-            padding: 0;
-            margin: 0;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            animation-name: backdiv;
-            animation-duration: 3500ms;
-            animation-iteration-count: infinite;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores Amarillas</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #fff;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
 
-        .heart {
-            position: absolute;
-            margin: auto;
-            top: 170px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            background-color: yellow;
-            height: 150px;
-            width: 150px;
-            transform: rotate(-45deg);
-            animation-name: beat;
-            animation-duration: 3500ms;
-            animation-iteration-count: infinite;
-        }
+    /* Fondo para PC */
+    body {
+      background-image: url('assets/PC.jpg'); /* cambia por tu imagen PC */
+    }
 
-        .heart:after {
-            background-color: yellow;
-            content: "";
-            border-radius: 50%;
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            top: 0;
-            left: 80px;
-        }
+    /* Fondo para móvil */
+    @media (max-width: 768px) {
+      body {
+        background-image: url('assets/mobil.jpg'); /* cambia por tu imagen móvil */
+      }
+    }
 
-        .heart:before {
-            background-color: yellow;
-            content: "";
-            border-radius: 50%;
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            top: -80px;
-            left: 0;
-        }
+    .container {
+      background: rgba(0, 0, 0, 0.45);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 600px;
+      z-index: 10;
+      position: relative;
+    }
 
-        @keyframes backdiv {
-            50% {
-                background: #87eb7efd;
-            }
-        }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
 
-        @keyframes beat {
-            0% {
-                transform: scale(1) rotate(-45deg);
-            }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
 
-            50% {
-                transform: scale(0.6) rotate(-45deg);
-            }
-        }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: #fff;
+      background: #a8890d;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-weight: bold;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
 
-        .bday {
-            text-align: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-            width: 100%;
-            font-size: 48px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 600;
-            color: #0e2804;
-            margin: 20px auto;
-            padding: 15px;
-            background-color: #aded23;
-        }
+    .btn:hover {
+      background: #996107;
+      transform: scale(1.05);
+    }
 
-        button {
-            background-color: rgb(143, 216, 64);
-            display: block; 
-            margin: 20px auto; 
-            padding: 10px 20px; 
-            color: white; 
-            border: none;
-            margin-top: 70vh;
-             
-        }
-        a{
-            direction: none;
-            color: black;
-            font-weight: 20px;
-        }
-    </style>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
-    <title>Flores Amarillas</title>
+    /* Animación pétalos */
+    .petal {
+      position: absolute;
+      top: -10vh;
+      width: 30px;
+      height: 30px;
+      background-image: url('assets/petalo.png'); /* imagen de un pétalo amarillo transparente */
+      background-size: cover;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="back">
-        <div class="bday">Para Ti mi Vida<br> </div>
-        <div class="heart"></div>
-        <footer>
-            <div class="boton">
-                <button><a href='./index2.html'><span>Has click aquí</span></a></button>
-            </div>
-        </footer>
-    </div>
+  <div class="container">
+    <h1>🌼 Hola! 🌼</h1>
+    <p>Tal vez olvide esta fecha, pero nunca el detalle.<br>Hoy recibe estas flores virtuales con cariño 💛</p>
+    <a href="index2.html" class="btn">Tomalas</a>
+  </div>
+
+  <script>
+    // Generar pétalos dinámicamente
+    const numPetals = 20; // cantidad de pétalos
+    for (let i = 0; i < numPetals; i++) {
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = 5 + Math.random() * 5 + "s";
+      petal.style.animationDelay = Math.random() * 5 + "s";
+      petal.style.width = 20 + Math.random() * 30 + "px";
+      petal.style.height = petal.style.width;
+      document.body.appendChild(petal);
+    }
+  </script>
 </body>
 </html>
